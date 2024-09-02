@@ -27,3 +27,14 @@ const cardList = document.querySelectorAll(".card");
 for (i = 0; i < cardList.length; i++) {
   cardList[i].classList.add("new-card");
 }
+
+// 10.10 Add a Listener
+const mainHeading = document.querySelector("h1");
+const originalText = mainHeading.textContent;
+const newH1Text = "Build an AR App";
+mainHeading.addEventListener("mouseover", function () {
+  mainHeading.textContent = newH1Text;
+});
+mainHeading.addEventListener("mouseout", function () {
+  mainHeading.textContent = originalText;
+});
