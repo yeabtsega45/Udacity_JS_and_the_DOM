@@ -55,3 +55,32 @@ ndList.forEach(function (nd) {
   button.classList = "button button--primary";
   nd.appendChild(button);
 });
+function toggleFavorite(event) {
+  // create a helper variable to hold the target
+  const target = event.target;
+
+  // check if the target is the button
+  if (target.nodeName === "BUTTON") {
+    // stop the default behavior (navigating to the nanodegree page)
+    event.preventDefault();
+
+    // check if the this is already a favorite
+    if (target.textContent.startsWith("Add")) {
+      // change the text to "Remove"
+      event.target.textContent = "Remove from favorites";
+
+      // create a an element to hold the favorite status indicator
+      const fav = document.createElement("p");
+      fav.textContent = "⭐ ⭐ ⭐ ";
+      // append the fav element to the title
+      target.parentElement.appendChild(fav);
+    } else {
+      // change the text back to "Add"
+      event.target.textContent = "Add to favorites";
+      // remove the favorite status indicator
+      target.nextSibling.remove();
+    }
+  }
+}
+const ndsContainer = document.querySelector(".list-nanodegrees");
+ndsContainer.addEventListener("click", toggleFavorite);
