@@ -38,3 +38,20 @@ mainHeading.addEventListener("mouseover", function () {
 mainHeading.addEventListener("mouseout", function () {
   mainHeading.textContent = originalText;
 });
+
+// 10.18 Remove an Event Listener
+const hero = document.querySelector(".hero__module");
+function removeElementOnce() {
+  hero.lastElementChild.remove();
+  document.removeEventListener("click", removeElementOnce);
+}
+document.addEventListener("click", removeElementOnce);
+
+// 10.19 Add Favorite Buttons
+const ndList = document.querySelectorAll(".card--nanodegree__title");
+ndList.forEach(function (nd) {
+  const button = document.createElement("button");
+  button.textContent = "Add to Favorites";
+  button.classList = "button button--primary";
+  nd.appendChild(button);
+});
